@@ -1,4 +1,4 @@
-# 📚 Library Management System
+# 📚 Library Management System REST API
 
 A modular Library Management System developed using **Spring Boot**. It follows clean architecture principles and includes layers like Controller, Service, Repository, DTOs, Mappers, and coustom exception handling for some exceptions.
 
