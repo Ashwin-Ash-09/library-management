@@ -16,9 +16,15 @@ import com.racoonash.librarymanagement.librarymanagement.Entity.BookEntity;
 import com.racoonash.librarymanagement.librarymanagement.Entity.BookLendEntity;
 import com.racoonash.librarymanagement.librarymanagement.Entity.UserEntity;
 
+// This interface defines the mapping between various Data Transfer Objects (DTOs) and Entity classes
+// in the library management system. It uses MapStruct to generate the implementation at compile time.
+// The mappings include converting between BookDTO and BookEntity, BookCopyDTO and BookCopyEntity,
+// UserDTO and UserEntity, and BookLendDTO and BookLendEntity.
+
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface AllMappers {
 
+        // Book Mapping
         @Mapping(target = "bookLend", ignore = true)
         @Mapping(target = "bookCopy", ignore = true)
         BookDTO toBookDTO(BookEntity bookEntity);

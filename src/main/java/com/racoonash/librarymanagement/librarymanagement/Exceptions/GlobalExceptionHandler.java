@@ -13,6 +13,12 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+// This class is a global exception handler for the library management system.
+// It handles validation errors that occur during request processing.
+// When a validation error occurs, it captures the error messages and returns them in a structured format
+// as a response with a 400 BAD REQUEST status code.
+
+
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 

@@ -17,6 +17,10 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+// This class represents a Book Lend entity in the library management system.
+// It contains fields for the book lend ID, book details, book copy details, user details,
+// issue date and time, due date and time, and a boolean indicating if the book has been returned.
+
 @Getter
 @Setter
 @AllArgsConstructor

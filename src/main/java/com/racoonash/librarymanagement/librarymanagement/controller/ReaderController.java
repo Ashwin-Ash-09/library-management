@@ -31,12 +31,20 @@ public class ReaderController {
         this.readerService = readerService;
     }
 
+    // This method retrieves a reader by their ID.
+    // It returns a ResponseEntity containing a UserDTO object,
+    // which includes the reader's details.
+    // If the reader is not found, it throws a UserNotFoundException.
     @GetMapping("/{id}")
     public ResponseEntity<UserDTO> getReader(@PathVariable long id) throws UserNotFoundException {
         UserDTO user = readerService.retriveReaderDTOById(id);
         return new ResponseEntity<UserDTO>(user, HttpStatus.OK);
     }
 
+    // This method retrieves all readers.
+    // It returns a ResponseEntity containing a list of UserEntity objects,
+    // which represent all readers in the system.
+    // This method is typically used to display all registered readers.
     @GetMapping("")
     public ResponseEntity<List<UserEntity>> getAllReaders() {
         List<UserEntity> users = readerService.findAllUsers();
@@ -44,18 +52,32 @@ public class ReaderController {
 
     }
 
+    // This method creates a new reader.
+    // It accepts a UserDTO object in the request body, validates it,
+    // and returns a ResponseEntity with the created reader's data and an HTTP status of CREATED.
+    // This method is used to register a new reader in the system.
+    // If the reader is successfully created, it returns the created UserDTO object.
     @PostMapping("")
     public ResponseEntity<UserDTO> createNewReader(@Valid @RequestBody UserDTO user) {
         readerService.createUser(user);
         return new ResponseEntity<UserDTO>(user, HttpStatus.CREATED);
     }
 
+    // This method deletes a reader by their ID.
+    // It returns a ResponseEntity with an HTTP status of NO_CONTENT.
+    // This method is used to remove a reader from the system.
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteReaderByID(@PathVariable long id){
         readerService.deleteReaderByID(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    // This method updates an existing reader by their ID.
+    // It accepts a UserDTO object in the request body, validates it,
+    // and returns a ResponseEntity with an HTTP status of NO_CONTENT.
+    // This method is used to modify the details of an existing reader.
+    // If the reader is successfully updated, it returns an HTTP status of NO_CONTENT.
+    // If the reader is not found, it throws a UserNotFoundException.
     @PutMapping("/{id}")
      public ResponseEntity<Object> updateReaderByID(@PathVariable long id,@Valid @RequestBody UserDTO readersDTO){
         readerService.updateReaderByID(id,readersDTO);

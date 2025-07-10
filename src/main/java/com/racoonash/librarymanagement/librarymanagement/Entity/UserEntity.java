@@ -22,6 +22,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+
+// This class represents a User entity in the library management system.
+// It contains fields for the reader ID, book lend details, username, email, role,
+// and join date and time.
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

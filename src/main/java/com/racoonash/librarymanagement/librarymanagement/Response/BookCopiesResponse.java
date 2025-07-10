@@ -14,6 +14,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+// This class represents a response containing book details and its associated copies.
+// It includes the book information and a list of book copies.
 @Getter
 @Setter
 @NoArgsConstructor

@@ -10,6 +10,10 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+// This class represents a response for lending a book.
+// It contains the book details, the book copy details, the username of the borrower,
+// and the book lend details.
+
 @Getter
 @Setter
 @AllArgsConstructor

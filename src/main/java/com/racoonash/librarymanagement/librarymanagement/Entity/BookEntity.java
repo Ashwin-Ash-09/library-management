@@ -22,6 +22,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+
+// This class represents a Book entity in the library management system.
+// It contains fields for the book ID, book name, author, ISBN, publish date,
+// and lists of book lend and book copy details.
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

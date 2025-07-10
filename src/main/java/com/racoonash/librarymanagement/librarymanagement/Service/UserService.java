@@ -1,6 +1,7 @@
 package com.racoonash.librarymanagement.librarymanagement.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -25,11 +26,15 @@ public class UserService {
         this.mapper = mapper;
     }
 
+    // Retrieves a UserDTO by ID
+    // Throws UserNotFoundException if the user does not exist
     public UserDTO retriveReaderDTOById(long id) throws UserNotFoundException {
 
         return mapper.toReadersDTO(retriveReaderEntityId(id));
     }
 
+    // Retrieves a UserEntity by ID
+    // Throws UserNotFoundException if the user does not exist
     public UserEntity retriveReaderEntityId(long id) throws UserNotFoundException {
         UserEntity user = readersRepository.findById(id).orElse(null);
 
@@ -39,21 +44,29 @@ public class UserService {
         return user;
     }
 
+    // Retrieves a UserEntity by username
+    // Throws UserNotFoundException if the user does not exist
     public List<UserEntity> findAllUsers() {
         return readersRepository.findAll();
     }
 
+    // Creates a new user and returns the UserDTO
+    // Throws UserNotFoundException if the user already exists
     public UserDTO createUser(UserDTO user) {
         UserEntity reader = mapper.toReadersEntity(user);
         user = mapper.toReadersDTO(readersRepository.save(reader));
         return user;
     }
 
+    // Deletes a user by ID
+    // Throws UserNotFoundException if the user does not exist
     public void deleteReaderByID(long id) {
         retriveReaderDTOById(id);
         readersRepository.deleteById(id);
     }
 
+    // Updates a user by ID and returns the updated UserDTO
+    // Throws UserNotFoundException if the user does not exist
     public UserDTO updateReaderByID(long id, UserDTO readersDTO) {
 
         UserEntity reader = retriveReaderEntityId(id);
@@ -64,8 +77,10 @@ public class UserService {
         return mapper.toReadersDTO(reader);
     }
 
+    // Retrieves a UserEntity by username
+    // Throws UserNotFoundException if the user does not exist
     public UserEntity retriveReaderEntityByUsername(String username) {
-        return readersRepository.findByUsername(username);
+        return Optional.ofNullable(readersRepository.findByUsername(username)).orElseThrow(() -> new UserNotFoundException("User Not Found"));
     }
 
 }

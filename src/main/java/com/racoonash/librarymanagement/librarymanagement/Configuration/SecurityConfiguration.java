@@ -18,6 +18,13 @@ import org.springframework.context.annotation.Configuration;
 @EnableWebSecurity
 public class SecurityConfiguration {
 
+    // This configuration class sets up security for the application.
+    // It disables form login, allows public access to the "/api/hello" endpoint,
+    // restricts access to "/api/users/**" to users with the "ADMIN" role,
+    // and requires either "ADMIN" or "LIBRARIAN" roles for all other endpoints.
+    // It also configures HTTP Basic authentication and uses an in-memory user store
+    // with two users: "admin" with the "ADMIN" role and "librarian" with the "LIBRARIAN" role.
+    // Passwords are encoded using BCrypt
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 

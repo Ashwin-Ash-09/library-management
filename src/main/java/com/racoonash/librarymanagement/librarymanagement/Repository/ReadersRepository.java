@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.racoonash.librarymanagement.librarymanagement.Entity.UserEntity;;
 
+// This interface extends JpaRepository to provide CRUD operations for UserEntity.
 @Repository
 public interface ReadersRepository extends JpaRepository<UserEntity,Long>{
 

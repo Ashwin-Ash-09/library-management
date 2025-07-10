@@ -20,6 +20,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+
+// This class represents a Book Copy entity in the library management system.
+// It contains fields for the copy ID, book details, book lend details, copy number,
+// and the status of the book copy.
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

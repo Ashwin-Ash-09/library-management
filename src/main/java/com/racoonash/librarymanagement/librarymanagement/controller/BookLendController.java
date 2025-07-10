@@ -25,6 +25,8 @@ public class BookLendController {
         this.lendService = lendService;
     }
 
+    // This method allows a user to lend a book by providing the user ID, book ID, and book copy ID.
+    // It returns a ResponseEntity with an HTTP status of OK.
     @PostMapping("/lend-book/user-id-{user-id}/book-id-{book-id}/book-copy-id-{book-copy-id}")
     public ResponseEntity<Object> postMethodName(
             @PathVariable(name = "book-id") long bookId,
@@ -37,6 +39,9 @@ public class BookLendController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    // This method retrieves all information about a specific book lend by its ID.
+    // It returns a ResponseEntity containing a BookLendResponse object,
+    // which includes the book details, user details, and copy details.
     @GetMapping("/lend-book/{id}")
     public ResponseEntity<BookLendResponse> retriveBookLendInfo(@PathVariable long id) {
         
@@ -44,6 +49,9 @@ public class BookLendController {
     }
 
 
+    // This method retrieves all book lend information.
+    // It returns a ResponseEntity containing a list of BookLendDTO objects,
+    // which represent the details of all lent books.
     @GetMapping("/lend-book")
     public ResponseEntity<List<BookLendDTO>> retriveAllBookLendInfo() {
 
@@ -51,6 +59,10 @@ public class BookLendController {
         return new ResponseEntity<>(bookLendDTOs,HttpStatus.OK);
     }
 
+    // This method updates the status of a book lend to indicate that the book has been returned.
+    // It accepts the book lend ID as a path variable and returns a ResponseEntity with an HTTP status of ACCEPTED.
+    // This method is used to mark a book as returned.
+    // It updates the book lend record in the database to reflect that the book has been returned.
     @PostMapping("/lend-book/{id}/return")
     public ResponseEntity<Object> bookReturened(@PathVariable long id) {
         lendService.updateReturnedBook(id);

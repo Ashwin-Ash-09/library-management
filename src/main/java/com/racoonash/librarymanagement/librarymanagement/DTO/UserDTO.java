@@ -15,6 +15,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+// This class represents a Data Transfer Object (DTO) for User.
+// It contains fields for the reader ID, book lend details, username, email, role,
+// and join date and time.
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

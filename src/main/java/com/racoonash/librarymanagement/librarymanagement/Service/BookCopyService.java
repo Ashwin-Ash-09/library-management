@@ -27,6 +27,10 @@ public class BookCopyService {
         this.mapper = mapper;
     }
 
+    // This method adds a new book copy to the repository.
+    // It retrieves the book entity by its ID, sets it to the book copy entity,
+    // saves the book copy entity, and returns the corresponding BookCopyDTO.
+    // If the book entity is not found, it throws a BookCopyNotFoundExceptions.
     public BookCopyDTO addBookCopy(long id, BookCopyDTO bookCopy) {
 
         BookCopyEntity bookCopyEntity = mapper.toBookCopyEntity(bookCopy);
@@ -36,10 +40,16 @@ public class BookCopyService {
 
     }
 
+    // This method retrieves all book copies associated with a specific book ID.
+    // It returns a list of BookCopyEntity objects representing all copies of the book.
+    // This is typically used to display all copies of a particular book.
     public List<BookCopyEntity> retriveAllCopies(long id) {
         return bookCopyRepository.findAllByBookBookId(id);
     }
 
+    // This method retrieves a specific book copy entity by its ID.
+    // If the book copy is not found, it throws a BookCopyNotFoundExceptions.
+    // It returns the BookCopyEntity object corresponding to the provided ID.
     public BookCopyEntity retriveCopyEntityById(long id) {
 
         BookCopyEntity copy = bookCopyRepository.findById(id).orElse(null);
@@ -48,12 +58,18 @@ public class BookCopyService {
         return copy;
     }
 
+    // This method retrieves a specific book copy DTO by its ID.
+    // It converts the BookCopyEntity to a BookCopyDTO using the mapper and returns it.
+    // This is typically used to get the details of a specific book copy in a DTO format
     public BookCopyDTO retriveCopyDTOById(long id) {
 
         BookCopyDTO copy = mapper.toBookCopyDTO(retriveCopyEntityById(id));
         return copy;
     }
 
+    // This method updates the status of a book copy by its ID.
+    // It retrieves the book copy entity, sets the new status, saves it,
+    // and returns the updated BookCopyDTO.
     public BookCopyDTO updateBookCopyStatus(long id, BookStatus status) {
         BookCopyEntity book = retriveCopyEntityById(id);
         book.setStatus(status);
@@ -62,10 +78,18 @@ public class BookCopyService {
 
     }
 
+    // This method deletes a book copy by its ID.
+    // It checks if the book copy exists, and if it does, it deletes it from the repository.
+    // If the book copy is not found, it throws a BookCopyNotFoundExceptions.
     public void deleteBookCopyById(long id) {
         bookCopyRepository.deleteById(id);
     }
 
+
+    // This method updates an existing book copy by its ID.
+    // It retrieves the book copy entity, updates its fields from the provided BookCopyDTO,
+    // saves the updated entity, and returns the updated BookCopyDTO.
+    // This is typically used to modify the details of an existing book copy.
     public BookCopyDTO updateBookCopyById(long id, BookCopyDTO book) {
 
         BookCopyEntity bookCopyEntity = retriveCopyEntityById(id);
